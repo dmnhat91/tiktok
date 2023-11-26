@@ -24,3 +24,11 @@ const MyUtilFn = require('../../../../utils/MyUtilFn');
 `npm install --save-dev babel-plugin-module-resolver`
 
 For autocompletion inside jsconfig.json, we have the syntax `"@/*": ["src/*"]` this means, whenever you press @ it will be mapped to src, the asterisk wildcard represents all files.
+
+3. Install library sass
+
+`npm i -D sass`
+
+4. Install [normalize.css](https://necolas.github.io/normalize.css/)
+
+`npm install --save normalize.css`
