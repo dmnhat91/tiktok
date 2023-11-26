@@ -32,3 +32,7 @@ For autocompletion inside jsconfig.json, we have the syntax `"@/*": ["src/*"]` t
 4. Install [normalize.css](https://necolas.github.io/normalize.css/)
 
 `npm install --save normalize.css`
+
+5. Install React Router DOM
+
+`npm i react-router-dom`
