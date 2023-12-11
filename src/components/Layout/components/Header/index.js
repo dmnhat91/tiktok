@@ -24,7 +24,23 @@ import { faKeyboard } from "@fortawesome/free-regular-svg-icons";
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
-  { icon: <FontAwesomeIcon icon={faEarthAsia} />, title: "English" },
+  {
+    icon: <FontAwesomeIcon icon={faEarthAsia} />,
+    title: "English",
+    children: {
+      title: "Language",
+      data: [
+        {
+          code: "en",
+          title: "English",
+        },
+        {
+          code: "vi",
+          title: "Tieng Viet",
+        },
+      ],
+    },
+  },
   { icon: <FontAwesomeIcon icon={faCircleQuestion} />, title: "Feedback and help", to: "/feedback" },
   { icon: <FontAwesomeIcon icon={faKeyboard} />, title: "Keyboard" },
 ];
