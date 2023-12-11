@@ -26,6 +26,8 @@ import styles from "./Header.module.scss";
 import images from "@/assets/images";
 import AccountItem from "@/components/AccountItem";
 import Menu from "@/components/Popper/Menu";
+import { SendIcon } from "@/components/Icons";
+import Image from "@/components/Image";
 
 // use classNames.bind to allow '-' in className (for example .post-item)
 const cx = classNames.bind(styles);
@@ -126,7 +128,7 @@ function Header() {
 
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img src="/avatar.jpeg" className={cx("user-avatar")} alt="Nguyen Van A" />
+              <Image src="/avatar.jpeg" className={cx("user-avatar")} alt="Nguyen Van A" />
             ) : (
               <button className={cx("more-btn")}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />
