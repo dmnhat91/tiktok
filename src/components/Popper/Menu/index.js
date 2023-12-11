@@ -9,7 +9,10 @@ import styles from "./Menu.module.scss";
 
 const cx = classNames.bind(styles);
 
-function Menu({ children, items = [] }) {
+// empty function to assign default to avoid exception due to 'undefined'
+const defaultFn = () => {};
+
+function Menu({ children, items = [], onChange = defaultFn }) {
   const [history, setHistory] = useState([{ data: items }]);
   const current = history[history.length - 1];
 
@@ -24,6 +27,8 @@ function Menu({ children, items = [] }) {
           onClick={() => {
             if (isParent) {
               setHistory((prev) => [...prev, item.children]);
+            } else {
+              onChange(item);
             }
           }}
         />
