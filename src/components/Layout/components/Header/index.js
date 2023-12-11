@@ -26,7 +26,7 @@ import styles from "./Header.module.scss";
 import images from "@/assets/images";
 import AccountItem from "@/components/AccountItem";
 import Menu from "@/components/Popper/Menu";
-import { SendIcon } from "@/components/Icons";
+import { SendIcon, UploadIcon } from "@/components/Icons";
 import Image from "@/components/Image";
 
 // use classNames.bind to allow '-' in className (for example .post-item)
@@ -115,7 +115,7 @@ function Header() {
             <>
               <Tippy delay={200} content="Upload video" placement="bottom">
                 <button className={cx("action-btn")}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
                 </button>
               </Tippy>
             </>
