@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 import classNames from "classnames/bind";
 import styles from "./Search.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,11 +52,15 @@ function Search() {
       updated_at	:	2022-05-05 23:11:39
       }]
     */
-    //  Use encodeURIComponent to encode special characters such as ?, &
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-      .then((res) => res.json())
+    axios
+      .get("https://tiktok.fullstack.edu.vn/api/users/search", {
+        params: {
+          q: debounced, // axios handle encodeURIComponent for you
+          type: "less",
+        },
+      })
       .then((res) => {
-        setSearchResult(res.data);
+        setSearchResult(res.data.data);
         setLoading(false);
       })
       .catch(() => setLoading(false));
