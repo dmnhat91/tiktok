@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import classNames from "classnames/bind";
 import styles from "./Search.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +8,7 @@ import { Wrapper as PopperWrapper } from "@/components/Popper";
 import AccountItem from "@/components/AccountItem";
 import { SearchIcon } from "@/components/Icons";
 import { useDebounce } from "@/hooks";
+import * as request from "@/utils/request";
 
 const cx = classNames.bind(styles);
 
@@ -52,18 +52,22 @@ function Search() {
       updated_at	:	2022-05-05 23:11:39
       }]
     */
-    axios
-      .get("https://tiktok.fullstack.edu.vn/api/users/search", {
-        params: {
-          q: debounced, // axios handle encodeURIComponent for you
-          type: "less",
-        },
-      })
-      .then((res) => {
-        setSearchResult(res.data.data);
+    const fetchApi = async () => {
+      try {
+        const res = await request.get("users/search", {
+          params: {
+            q: debounced, // axios handle encodeURIComponent for you
+            type: "less",
+          },
+        });
+        setSearchResult(res.data);
         setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+
+    fetchApi();
   }, [debounced]);
 
   const handleClear = () => {
